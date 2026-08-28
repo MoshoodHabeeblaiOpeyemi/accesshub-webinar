@@ -95,6 +95,7 @@
     </section>
 
     <!-- HIDDEN DASHBOARD -->
+    <!-- HIDDEN DASHBOARD -->
     <section class="registration" id="dashboardSection">
       <div class="card-header" style="background: var(--teal); color: var(--navy);">
         <h2>Welcome to the Webinar! 🎉</h2>
@@ -105,9 +106,15 @@
           <!-- Attendees will magically appear here! -->
         </ul>
 
-        <!-- Extra back button inside the dashboard -->
-        <div style="margin-top: 30px;">
+        <!-- Action Buttons -->
+        <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
           <a href="index.html" style="color: var(--navy); font-weight: 700; text-decoration: none;">← Back to Home</a>
+
+          <!-- NEW LOG OUT BUTTON -->
+          <button id="logoutBtn" type="button"
+            style="background: var(--danger); color: white; width: auto; padding: 10px 20px; font-size: 0.9rem;">
+            Leave Webinar 🚪
+          </button>
         </div>
       </div>
     </section>

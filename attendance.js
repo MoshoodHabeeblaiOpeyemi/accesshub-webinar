@@ -19,6 +19,10 @@ const form = document.getElementById("attendanceForm");
 const checkInBtn = document.getElementById("checkInBtn");
 const attendeeList = document.getElementById("attendeeList");
 
+// NEW: Track current user session for log out
+let currentUserDocId = null;
+const logoutBtn = document.getElementById("logoutBtn");
+
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("attendeeEmail").value.trim().toLowerCase();
@@ -33,6 +37,7 @@ form.addEventListener("submit", async (e) => {
 
     if (!querySnapshot.empty) {
       const userDoc = querySnapshot.docs[0];
+      currentUserDocId = userDoc.id; // 👈 Save user's Firestore doc ID
       
       // Mark as attended in database! ✅
       await updateDoc(doc(db, "registrations", userDoc.id), { attended: true });
@@ -42,6 +47,9 @@ form.addEventListener("submit", async (e) => {
       dashboardSection.style.display = "block";
       document.querySelector(".hero p").textContent = "You are successfully checked in!";
       
+      checkInBtn.textContent = "Join Webinar →";
+      checkInBtn.disabled = false;
+
       loadLiveAttendees();
     } else {
       alert("❌ Invalid Email or Access Code. Please try again!");
@@ -66,5 +74,36 @@ function loadLiveAttendees() {
       li.textContent = `${data.firstName} ${data.lastName}`;
       attendeeList.appendChild(li);
     });
+  });
+}
+
+// LOG OUT / LEAVE WEBINAR LOGIC 🚪
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    if (currentUserDocId) {
+      try {
+        logoutBtn.textContent = "Leaving... ⏳";
+        logoutBtn.disabled = true;
+
+        // Flip 'attended' back to false in Firebase! 🔄
+        await updateDoc(doc(db, "registrations", currentUserDocId), { attended: false });
+
+        // Reset UI back to login screen
+        dashboardSection.style.display = "none";
+        loginSection.style.display = "block";
+        document.getElementById("attendanceForm").reset();
+        document.querySelector(".hero p").textContent = "Enter your email and access code to join.";
+        
+        logoutBtn.textContent = "Leave Webinar 🚪";
+        logoutBtn.disabled = false;
+        currentUserDocId = null;
+      } catch (error) {
+        console.error("Error logging out:", error);
+        alert("⚠️ Error leaving webinar. Please try again.");
+        logoutBtn.disabled = false;
+      }
+    } else {
+      location.reload();
+    }
   });
 }
