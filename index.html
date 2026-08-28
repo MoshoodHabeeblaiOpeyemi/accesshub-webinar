@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/IMG-20260824-WA0035.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="/firebaseauth.js"></script>
+  <title>AccessHub | Webinar Registration</title>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a class="brand" href="#">
+      <img src="/IMG-20260824-WA0035.jpg" alt="AccessHub logo">
+      <span>Access<span>Hub</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="attendance.html">Join Webinar</a>
+      <a class="nav-cta" href="#registration">Register Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img class="hero-logo" src="/IMG-20260824-WA0035.jpg" alt="AccessHub logo">
+      <h1>Webinar Registration</h1>
+      <p>Secure your spot for our upcoming webinar.</p>
+      <div class="accent"></div>
+    </section>
+
+    <section class="registration" id="registration">
+      <div class="card-header">
+        <h2>Register for the Webinar</h2>
+        <p>Fill in your details to secure your spot.</p>
+      </div>
+
+      <form id="registrationForm" novalidate>
+        <div class="field">
+          <label for="firstName">First Name</label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name">
+          <div class="error" id="firstNameError" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="lastName">Last Name</label>
+          <input id="lastName" name="lastName" type="text" autocomplete="family-name">
+          <div class="error" id="lastNameError" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input id="email" name="email" type="email" autocomplete="email">
+          <div class="error" id="emailError" aria-live="polite"></div>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+234 801 234 5678">
+          <div class="error" id="phoneError" aria-live="polite"></div>
+        </div>
+
+        <button id="submitButton" type="submit">Register <span aria-hidden="true">→</span></button>
+
+        <!-- The new mobile-friendly link! -->
+        <div style="text-align: center; margin-top: 22px;">
+          <p style="font-size: 0.9rem; color: var(--muted); margin: 0;">
+            Already have an access code?
+            <br>
+            <a href="attendance.html"
+              style="color: var(--teal); font-weight: 800; text-decoration: none; display: inline-block; margin-top: 6px;">
+              Join the webinar here 🚪🚶‍♂️
+            </a>
+          </p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="#">
+      <img src="/IMG-20260824-WA0035.jpg" alt="AccessHub logo">
+      <span>Access<span>Hub</span></span>
+    </a>
+    <small>© 2026 AccessHub. All rights reserved.</small>
+  </footer>
+
+  <!-- Success popup -->
+  <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="modal-card">
+      <div class="check">✓</div>
+      <h2 id="successTitle">Registered!</h2>
+      <p>Your access code has been emailed to you!</p>
+      <button id="closeModal" type="button" style="margin-bottom: 15px;">Got it</button>
+      <br>
+      <a href="attendance.html"
+        style="color: var(--teal); font-weight: 800; text-decoration: none; font-size: 0.95rem;">
+        Take me to the check-in page 🏃‍♂️💨
+      </a>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script type="module" src="/script.js"></script>
+</body>
+
+</html>

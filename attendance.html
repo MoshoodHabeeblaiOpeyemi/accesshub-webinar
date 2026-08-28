@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/IMG-20260824-WA0035.jpg">
+  <link rel="stylesheet" href="style.css">
+  <title>AccessHub | Webinar Attendance</title>
+  <style>
+    /* Extra styles for the dashboard reveal */
+    #dashboardSection {
+      display: none;
+      text-align: center;
+    }
+
+    .attendee-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+      text-align: left;
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    .attendee-list li {
+      background: var(--light);
+      margin-bottom: 10px;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .attendee-list li::before {
+      content: '✅';
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- UPDATED: Full Navigation Bar -->
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="/IMG-20260824-WA0035.jpg" alt="AccessHub logo">
+      <span>Access<span>Hub</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#registration">Register</a>
+      <a class="nav-cta" href="index.html">Back to Registration</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img class="hero-logo" src="/IMG-20260824-WA0035.jpg" alt="AccessHub logo">
+      <h1>Webinar Check-In</h1>
+      <p>Enter your email and access code to join.</p>
+      <div class="accent"></div>
+    </section>
+
+    <!-- LOGIN FORM -->
+    <section class="registration" id="loginSection">
+      <div class="card-header">
+        <h2>Attendee Login</h2>
+      </div>
+      <form id="attendanceForm">
+        <div class="field">
+          <label for="attendeeEmail">Email Address</label>
+          <input id="attendeeEmail" type="email" required>
+        </div>
+        <div class="field">
+          <label for="accessCode">Access Code</label>
+          <input id="accessCode" type="text" placeholder="e.g. AH-1234" required>
+        </div>
+        <button id="checkInBtn" type="submit">Join Webinar <span>→</span></button>
+
+        <!-- UPDATED: Mobile-friendly back link -->
+        <div style="text-align: center; margin-top: 22px;">
+          <p style="font-size: 0.9rem; color: var(--muted); margin: 0;">
+            Don't have an access code yet?
+            <br>
+            <a href="index.html"
+              style="color: var(--teal); font-weight: 800; text-decoration: none; display: inline-block; margin-top: 6px;">
+              Register here 📝🏃‍♂️
+            </a>
+          </p>
+        </div>
+      </form>
+    </section>
+
+    <!-- HIDDEN DASHBOARD -->
+    <section class="registration" id="dashboardSection">
+      <div class="card-header" style="background: var(--teal); color: var(--navy);">
+        <h2>Welcome to the Webinar! 🎉</h2>
+      </div>
+      <div style="padding: 30px;">
+        <h3>Live Attendee List 👥</h3>
+        <ul class="attendee-list" id="attendeeList">
+          <!-- Attendees will magically appear here! -->
+        </ul>
+
+        <!-- Extra back button inside the dashboard -->
+        <div style="margin-top: 30px;">
+          <a href="index.html" style="color: var(--navy); font-weight: 700; text-decoration: none;">← Back to Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- UPDATED: The Missing Footer -->
+  <footer>
+    <a class="brand" href="index.html">
+      <img src="/IMG-20260824-WA0035.jpg" alt="AccessHub logo">
+      <span>Access<span>Hub</span></span>
+    </a>
+    <small>© 2026 AccessHub. All rights reserved.</small>
+  </footer>
+
+  <script type="module" src="/attendance.js"></script>
+</body>
+
+</html>
